@@ -8,13 +8,13 @@ struct matrix {
 } matrix;
 
 //Basic matrix manipulation routines
-struct matrix *new_matrix(int rows, int cols);
-void free_matrix(struct matrix *m);
-void grow_matrix(struct matrix *m, int newcols);
-void copy_matrix(struct matrix *a, struct matrix *b);
-void print_matrix(struct matrix *m);
-void ident(struct matrix *m);
-void scalar_mult(double x, struct matrix *m);
+struct matrix *new_matrix(int rows, int cols); //dw
+void free_matrix(struct matrix *m); //dw
+void grow_matrix(struct matrix *m, int newcols);  //dw
+void copy_matrix(struct matrix *a, struct matrix *b); //dw
+void print_matrix(struct matrix *m); //done
+void ident(struct matrix *m); //done
+void scalar_mult(double x, struct matrix *m); //done 2/29/16
 void matrix_mult(struct matrix *a, struct matrix *b);
 struct matrix * make_translate(double x, double y, double z);
 struct matrix * make_scale(double x, double y, double z);

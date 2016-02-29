@@ -77,6 +77,19 @@ Returns:
 print the matrix
 */
 void print_matrix(struct matrix *m) {
+  char stuff[ (m->lastcol * 3) + 1]; // plus a null
+  int r,c;
+  int count = 0;
+  for (r=0;r<3;r++){
+    for (c=0;c<m->lastcol; c++){
+      stuff[ count ] = m->m[r][c];
+      count += 1;
+    }
+    stuff[count] = '\n';
+    count += 1;
+  }
+
+  printf("MATRIX START: \n%s\nMATRIX END\n", stuff);
 }
 
 /*-------------- void ident() --------------
@@ -86,8 +99,18 @@ Returns:
 turns m in to an identity matrix
 */
 void ident(struct matrix *m) {
+      int x,y;
+  for (x=0;x<4;x++){
+    y = 0;
+    for(y=0;y < 4; y++){      
+      if (x==y){
+	m->m[x][y] = 1;
+      } else {
+	m->m[x][y] = 0;
+      }
+    }
+  }
 }
-
 
 /*-------------- void scalar_mult() --------------
 Inputs:  double x
@@ -97,6 +120,15 @@ Returns:
 multiply each element of m by x
 */
 void scalar_mult(double x, struct matrix *m) {
+  int r = 0;
+  int c = 0;
+  while (r<3){
+    while (c < m->lastcol ){
+      m->m[r][c] *= x;
+      c++;
+    }
+    r++;
+  }
 }
 
 
