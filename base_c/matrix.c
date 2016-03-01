@@ -77,19 +77,26 @@ Returns:
 print the matrix
 */
 void print_matrix(struct matrix *m) {
-  char stuff[ (m->lastcol * 3) + 1]; // plus a null
+  double stuff[ (m->lastcol * 3) + 4]; // plus 3 \n and a null
   int r,c;
   int count = 0;
   for (r=0;r<3;r++){
-    for (c=0;c<m->lastcol; c++){
+    for (c=0;c< (m->lastcol) ; c++){
       stuff[ count ] = m->m[r][c];
+      printf("%f-%d ", stuff[count], count);
+      printf("%f ", m->m[r][c]);
       count += 1;
     }
     stuff[count] = '\n';
     count += 1;
   }
-
-  printf("MATRIX START: \n%s\nMATRIX END\n", stuff);
+  stuff[count] = '\0';
+  int i = 0;
+  while (stuff[i]){
+    printf("%c", stuff[i]);
+    i++;
+  }
+  printf("MATRIX START: \n%f\nMATRIX END\n", stuff);
 }
 
 /*-------------- void ident() --------------
@@ -99,16 +106,19 @@ Returns:
 turns m in to an identity matrix
 */
 void ident(struct matrix *m) {
-      int x,y;
+  int x,y;
   for (x=0;x<4;x++){
     y = 0;
     for(y=0;y < 4; y++){      
       if (x==y){
 	m->m[x][y] = 1;
+	//printf("1 ");
       } else {
 	m->m[x][y] = 0;
+	//printf("0 ");
       }
     }
+    //printf("\n");
   }
 }
 
@@ -168,6 +178,22 @@ Returns: The translation matrix created using x, y and z
 as the translation offsets.
 ====================*/
 struct matrix * make_translate(double x, double y, double z) {
+
+  struct matrix *ad;
+  ad = new_matrix(4,4);
+  ident( ad );
+
+  ad->m[0][3] = x;
+  ad->m[1][3] = y;
+  ad->m[2][3] = z;
+  /*
+
+  [1 0 0 a		[x		[x + a
+ 0 1 0 b	*	 y	=	 y + b 
+ 0 0 1 c			 z		 z + c
+ 0 0 0 1]		 1]		 1]
+  */
+  
 }
 
 /*======== struct matrix * make_scale() ==========
