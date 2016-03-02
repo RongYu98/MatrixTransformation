@@ -16,7 +16,7 @@ void print_matrix(struct matrix *m); //done
 void ident(struct matrix *m); //done //tested
 void scalar_mult(double x, struct matrix *m); //done 2/29/16
 void matrix_mult(struct matrix *a, struct matrix *b);
-struct matrix * make_translate(double x, double y, double z);
+struct matrix * make_translate(double x, double y, double z); //done, untested
 struct matrix * make_scale(double x, double y, double z);
 struct matrix * make_rotX(double theta);
 struct matrix * make_rotY(double theta);
