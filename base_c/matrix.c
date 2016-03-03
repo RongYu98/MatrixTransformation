@@ -77,27 +77,16 @@ Returns:
 print the matrix
 */
 void print_matrix(struct matrix *m) {
-  double stuff[ (m->lastcol * 3) + 4]; // plus 3 \n and a null
+  //double stuff[ (m->lastcol * 3) + 4]; // plus 3 \n and a null
   int r,c;
-  int count = 0;
   printf("Matrix Start: \n");
-  for (r=0;r<3;r++){
-    for (c=0;c< (m->lastcol) ; c++){
-      //stuff[ count ] = m->m[r][c];
-      //printf("%f-%d ", stuff[count], count);
+  for (r=0;r< 4;r++){
+    for (c=0;c < (m->lastcol) ; c++){
       printf("%f ", m->m[r][c]);
-      //count += 1;
     }
-    //stuff[count] = '\n';
-    //count += 1;
     printf("\n");
   }
-  //stuff[count] = '\0';
-  //int i = 0;
-  //while (stuff[i]){
-  //printf("%c", stuff[i]);
-  // i++;
-  //}
+  printf("Matrix End\n");
   //printf("MATRIX START: \n%f\nMATRIX END\n", stuff);
 }
 
@@ -110,18 +99,18 @@ turns m in to an identity matrix
 void ident(struct matrix *m) {
   int x,y;
   for (x=0;x<4;x++){
-    y = 0;
     for(y=0;y < 4; y++){      
       if (x==y){
 	m->m[x][y] = 1;
-	//printf("1 ");
+	//printf("%f\t", m->m[x][y] );
       } else {
 	m->m[x][y] = 0;
-	//printf("0 ");
+	//printf("%f\t", m->m[x][y] );
       }
     }
-    //printf("\n");
+    printf("\n");
   }
+  m->lastcol = 4;
 }
 
 /*-------------- void scalar_mult() --------------
@@ -134,7 +123,9 @@ multiply each element of m by x
 void scalar_mult(double x, struct matrix *m) {
   int r = 0;
   int c = 0;
-  while (r<3){
+  printf("The Last Col is: %d\n", m->lastcol);
+  while (r<4){
+    c = 0;
     while (c < m->lastcol){
       m->m[r][c] *= x;
       c++;
@@ -152,10 +143,8 @@ Returns:
 a*b -> b
 */
 void matrix_mult(struct matrix *a, struct matrix *b) {
-<<<<<<< HEAD
   int r,c,stuff;
   for ( c=0; c<b->lastcol; c++ ){
-
     for (r=0; r<4; r++){
       stuff = 0;
       stuff += (a->m[r][0] * b->m[0][c] );
