@@ -152,6 +152,7 @@ Returns:
 a*b -> b
 */
 void matrix_mult(struct matrix *a, struct matrix *b) {
+<<<<<<< HEAD
   int r,c,stuff;
   for ( c=0; c<b->lastcol; c++ ){
 
@@ -165,9 +166,8 @@ void matrix_mult(struct matrix *a, struct matrix *b) {
     }
     
   }
-
 }
-
+  
 
 
 /*-------------- void copy_matrix() --------------
