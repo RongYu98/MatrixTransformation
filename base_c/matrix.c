@@ -80,23 +80,25 @@ void print_matrix(struct matrix *m) {
   double stuff[ (m->lastcol * 3) + 4]; // plus 3 \n and a null
   int r,c;
   int count = 0;
+  printf("Matrix Start: \n");
   for (r=0;r<3;r++){
     for (c=0;c< (m->lastcol) ; c++){
-      stuff[ count ] = m->m[r][c];
-      printf("%f-%d ", stuff[count], count);
+      //stuff[ count ] = m->m[r][c];
+      //printf("%f-%d ", stuff[count], count);
       printf("%f ", m->m[r][c]);
-      count += 1;
+      //count += 1;
     }
-    stuff[count] = '\n';
-    count += 1;
+    //stuff[count] = '\n';
+    //count += 1;
+    printf("\n");
   }
-  stuff[count] = '\0';
-  int i = 0;
-  while (stuff[i]){
-    printf("%c", stuff[i]);
-    i++;
-  }
-  printf("MATRIX START: \n%f\nMATRIX END\n", stuff);
+  //stuff[count] = '\0';
+  //int i = 0;
+  //while (stuff[i]){
+  //printf("%c", stuff[i]);
+  // i++;
+  //}
+  //printf("MATRIX START: \n%f\nMATRIX END\n", stuff);
 }
 
 /*-------------- void ident() --------------
@@ -133,7 +135,7 @@ void scalar_mult(double x, struct matrix *m) {
   int r = 0;
   int c = 0;
   while (r<3){
-    while (c < m->lastcol ){
+    while (c < m->lastcol){
       m->m[r][c] *= x;
       c++;
     }
@@ -150,6 +152,20 @@ Returns:
 a*b -> b
 */
 void matrix_mult(struct matrix *a, struct matrix *b) {
+  int r,c,stuff;
+  for ( c=0; c<b->lastcol; c++ ){
+
+    for (r=0; r<4; r++){
+      stuff = 0;
+      stuff += (a->m[r][0] * b->m[0][c] );
+      stuff += (a->m[r][1] * b->m[1][c] );
+      stuff += (a->m[r][2] * b->m[2][c] );
+      stuff += (a->m[r][3] * b->m[3][c] );
+      b->m[r][c] = stuff;
+    }
+    
+  }
+
 }
 
 
