@@ -80,9 +80,9 @@ void print_matrix(struct matrix *m) {
   //double stuff[ (m->lastcol * 3) + 4]; // plus 3 \n and a null
   int r,c;
   printf("Matrix Start: \n");
-  for (r=0;r< 4;r++){
-    for (c=0;c < (m->lastcol) ; c++){
-      printf("%f ", m->m[r][c]);
+  for (c=0;c < (m->lastcol) ; c++){
+    for (r=0;r< 4;r++){
+      printf("%f \t", m->m[r][c]);
     }
     printf("\n");
   }

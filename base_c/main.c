@@ -15,7 +15,7 @@ int main() {
 
   edges = new_matrix(4, 4);
   transform = new_matrix(4, 4);
-
+  /*
   ident( edges );
   ident( transform );
   scalar_mult(20, edges );
@@ -25,7 +25,25 @@ int main() {
   matrix_mult(transform, edges );
   print_matrix(transform);
   print_matrix(edges);
-  
+  */
+  color c;
+  c.red = 0;
+  c.green = 45;
+  c.blue = 200;
+  int x, y, x1, y1, i;
+  for (i = 0; i<10; i++ ){
+    x = 9*sin(i)*sin(i) + 9*sin(i);
+    y = 9*sin(i)*sin(i) + 9*sin(i);
+    x1 = 9*cos(i+1)*cos(i+1) + 9*cos(i+1);
+    y1 = 9*cos(i+1)*cos(i+1) + 9*cos(i+1);
+    add_edge( edges, x,y,1, x1,y1,1);
+  }
+  print_matrix(edges);
+
+  draw_lines(edges, s, c);
+
+  save_ppm( s, "pic.ppm" );
   free_matrix( transform );
   free_matrix( edges );
-}  
+}
+
