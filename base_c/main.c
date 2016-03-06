@@ -41,7 +41,6 @@ int main() {
     y1 = 9*cos(i+1)*cos(i+1) + 9*cos(i+1);
     add_edge( edges, x,y,1, x1,y1,1);
   }
-  */
   i = 1;
   for (x = 0; x<4; x++){
     for (y = 0; y<4; y++){
@@ -50,23 +49,49 @@ int main() {
       i++;
     }
   }
-  
-  print_matrix(edges);
-  print_matrix(transform);
+  */
+  //print_matrix(edges);
+  //print_matrix(transform);
   /*
   matrix_mult(edges, transform);
   print_matrix(transform);
+  add_edge(edges, 200, 200,1, 200, 300, 1);
+  add_edge(edges, 200,300,1, 300, 300,1);
+  add_edge(edges, 300,300,1, 300,200,1);
+  add_edge(edges, 300,200,1, 200,200,1);
   */
-  add_edge(edges, 100, 100,1, 200, 100, 1);
-  add_edge(edges, 200,100,1, 200, 200,1);
-  add_edge(edges, 200,200,1, 100,200,1);
-  add_edge(edges, 100,200,1, 100,100,1);
-  
+
+  add_edge(edges,200,200,1,300,300,1);
+  add_edge(edges,200,300,1,300,200,1);
+  add_edge(edges,200,250,1,300,250,1);
+  add_edge(edges,250,200,1,250,300,1);
   draw_lines(edges, s, c);
 
-  struct matrix * rotatedZ = make_rotZ(0.5234);
-  matrix_mult(rotatedZ, edges);
-
+  struct matrix *big;
+  struct matrix *temp = new_matrix(4,4);
+  ident(temp);
+  struct matrix * rotatedZ;
+  for (i=0; i<20; i++){
+    rotatedZ = make_rotZ(i/10);
+    printf("1\n");
+    matrix_mult(rotatedZ, edges);
+    printf("2\n");
+    /*
+    copy_matrix(edges, temp);
+    printf("2\n");
+    matrix_mult(rotatedZ, temp);
+    draw_lines(temp,s,c);
+    big = make_scale(i%5, (i+1)%5, (i+2)%5);
+    printf("3\n");
+    matrix_mult(big, temp);
+    draw_lines(temp,s,c);
+    */
+    matrix_mult(rotatedZ, edges);
+    draw_lines(edges,s,c);
+    big = make_scale( (i%5) /3, ((i+1)%3)/5, ((i+2)%3)/5 );
+    matrix_mult(big, edges);
+    draw_lines(edges, s,c);
+  }
   print_matrix(edges);
   draw_lines(edges, s, c);
   
