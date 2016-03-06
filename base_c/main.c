@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -56,6 +57,11 @@ int main() {
   matrix_mult(edges, transform);
   print_matrix(transform);
   */
+  add_edge(edges, 100, 100,1, 200, 100, 1);
+  add_edge(edges, 200,100,1, 200, 200,1);
+  add_edge(edges, 200,200,1, 100,200,1);
+  add_edge(edges, 100,200,1, 100,100,1);
+  
   
   draw_lines(edges, s, c);
 
