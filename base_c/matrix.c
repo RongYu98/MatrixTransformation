@@ -108,7 +108,7 @@ void ident(struct matrix *m) {
 	//printf("%f\t", m->m[x][y] );
       }
     }
-    printf("\n");
+    //printf("\n");
   }
   m->lastcol = 4;
 }

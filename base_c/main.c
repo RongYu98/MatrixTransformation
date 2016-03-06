@@ -73,9 +73,11 @@ int main() {
   struct matrix * rotatedZ;
   for (i=0; i<20; i++){
     rotatedZ = make_rotZ(i/10);
-    printf("1\n");
+    //printf("1\n");
     matrix_mult(rotatedZ, edges);
-    printf("2\n");
+    print_matrix(edges);
+    printf("%d\n",i);
+    //printf("2\n");
     /*
     copy_matrix(edges, temp);
     printf("2\n");
@@ -86,9 +88,10 @@ int main() {
     matrix_mult(big, temp);
     draw_lines(temp,s,c);
     */
-    matrix_mult(rotatedZ, edges);
+    
+    //matrix_mult(rotatedZ, edges);
     draw_lines(edges,s,c);
-    big = make_scale( (i%5) /3, ((i+1)%3)/5, ((i+2)%3)/5 );
+    big = make_scale( (i%5) /3 +1, ((i+1)%3)/5+1, ((i+2)%3)/5+1 );
     matrix_mult(big, edges);
     draw_lines(edges, s,c);
   }
