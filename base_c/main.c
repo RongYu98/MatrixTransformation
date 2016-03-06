@@ -64,9 +64,10 @@ int main() {
   
   draw_lines(edges, s, c);
 
-  struct matrix * rotatedZ = make_rotZ(2.1234);
+  struct matrix * rotatedZ = make_rotZ(0.5234);
   matrix_mult(rotatedZ, edges);
 
+  print_matrix(edges);
   draw_lines(edges, s, c);
   
   //save_ppm( s, "pic.ppm" );
