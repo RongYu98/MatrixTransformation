@@ -91,7 +91,11 @@ int main() {
     
     //matrix_mult(rotatedZ, edges);
     draw_lines(edges,s,c);
-    big = make_scale( (i%5) /3 +1, ((i+1)%3)/5+1, ((i+2)%3)/5+1 );
+    if (i%2 == 0){
+      big = make_scale(  .7, 1.5,1 );
+    } else {
+      big = make_scale(1.5, .7,1 );
+    }
     matrix_mult(big, edges);
     draw_lines(edges, s,c);
   }
