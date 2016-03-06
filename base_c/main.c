@@ -62,9 +62,13 @@ int main() {
   add_edge(edges, 200,200,1, 100,200,1);
   add_edge(edges, 100,200,1, 100,100,1);
   
-  
   draw_lines(edges, s, c);
 
+  struct matrix * rotatedZ = make_rotZ(2.1234);
+  matrix_mult(rotatedZ, edges);
+
+  draw_lines(edges, s, c);
+  
   //save_ppm( s, "pic.ppm" );
   save_extension(s, "lines.png");
   free_matrix( transform );
