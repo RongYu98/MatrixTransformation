@@ -42,7 +42,8 @@ int main() {
 
   draw_lines(edges, s, c);
 
-  save_ppm( s, "pic.ppm" );
+  //save_ppm( s, "pic.ppm" );
+  save_extension(s, "lines.png");
   free_matrix( transform );
   free_matrix( edges );
 }
